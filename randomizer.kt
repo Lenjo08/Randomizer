@@ -5,9 +5,12 @@ val getKeyboard = Scanner(System.`in`);
 val randomize = Random();
 
 fun main(args: Array<String>){
-    println("Kotlin Randomizer 1.0");
-    showMenu("main");
-    getAction("main", getKeyboard.nextInt());
+    println("Randomizer v1.0");
+    do{
+        showMenu("main");
+        getAction("main", getKeyboard.nextInt());
+        println("Enter 'Q' to Quit, anything else to continue.");
+    } while (!getKeyboard.next().equals("q", true));
 }
 
 fun showMenu(context: String) = when(context){
@@ -39,7 +42,10 @@ fun getAction(context: String, position: Int) = when(context){
 }
 
 fun doAction(context: String, num: Int) = when(context){
-    "coins" -> println("Do $num coin stuff"); // Boolean
+    "coins" -> {
+        println("Results of coin tosses:")
+        for (i in 1..num) println(if (randomize.nextBoolean()){"$i. Heads"} else {"$i. Tails"})
+    }
     "dice" -> println("Do $num dice stuff"); // Int 1-6
     "cards" -> println("Do $num card stuff"); // 2D Array
     else -> println("This feature is currently unavilable");
