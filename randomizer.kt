@@ -4,6 +4,9 @@ import java.util.Scanner;
 val getKeyboard = Scanner(System.`in`);
 val randomize = Random();
 
+val suits = arrayOf("Spades", "Hearts", "Diamonds", "Clubs");
+val cards = arrayOf("Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King");
+
 fun main(args: Array<String>){
     println("Randomizer v1.0");
     do{
@@ -46,7 +49,20 @@ fun doAction(context: String, num: Int) = when(context){
         println("Results of coin tosses:")
         for (i in 1..num) println(if (randomize.nextBoolean()){"$i. Heads"} else {"$i. Tails"})
     }
-    "dice" -> println("Do $num dice stuff"); // Int 1-6
-    "cards" -> println("Do $num card stuff"); // 2D Array
+    "dice" -> {
+        println("Results of die rolls:")
+        for (i in 1..num) {
+            var rnd = (1..6).random();
+            println("$i. $rnd");
+        }
+    }
+    "cards" -> {
+        println("Results of card picks:")
+        for (i in 1..num) {
+            var suit = suits.get((0 until suits.size).random());
+            var card = cards.get((0 until cards.size).random());
+            println("$i. $card of $suit");
+        }
+    }
     else -> println("This feature is currently unavilable");
 }
