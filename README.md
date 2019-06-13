@@ -13,5 +13,4 @@ Here a random output is given in the integral range 1(inlusive) to 6(inclsive).
 3: Pick card 
 Here output is given in for of a card from a standard 52 card set, implemented using separate arrays for the suit and face value of the card.
 
-Additional features will be forthcoming in 2.0.
-Feel free to request features and open issues on my github page.
+This was built as a sort of "hello world", an introduction to basic kotlin concepts.
